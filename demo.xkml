@@ -1,0 +1,66 @@
+meta:
+    title: xkml
+    author: you
+    size: 650*400
+comic:
+    cast:
+        cueball:
+            images:
+                head: ./components/body/cueball.png
+                body: ./components/body/body.png
+                arm: ./components/body/arm.png
+                leg: ./components/body/leg.png
+            scaling:
+                global: 0.3
+                head: 3.33
+        megan:
+            images:
+                head: ./components/body/cueball.png
+                body: ./components/body/body.png
+                arm: ./components/body/arm.png
+                leg: ./components/body/leg.png
+            scaling:
+                global: 0.3
+                head: 3.33
+    panels:
+        0:
+            position: 10, 10
+            size: 310*380
+            figures:
+                cueball:
+                    neck: 100, 285
+                    head:
+                        theta: 0
+                        direction: r
+                    body:
+                        theta: -5
+                    arms:
+                        thetas:
+                            l: -45, -135
+                            r: 30, 150
+                    legs:
+                        thetas:
+                            l: -15, -10
+                            r: 15, 10
+
+        1:
+            position: 330, 10
+            size: 310*380
+            figures:
+                cueball:
+                    neck: 100, 285
+                    head:
+                        theta: 0
+                        direction: l
+                    body:
+                        theta: 0
+                    arms:
+                        thetas:
+                            l: -15, -15
+                            r: 15, 15
+                    legs:
+                        thetas:
+                            l: -15, -10
+                            r: 15, 10
+
+
