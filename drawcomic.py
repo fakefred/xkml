@@ -1,5 +1,6 @@
 from PIL import Image, ImageDraw
 from drawpanel import drawPanel
+from drawtext import drawText
 from utils import getValueOrFallback
 from parser import parse as parseXKML
 
@@ -94,7 +95,7 @@ comic = {
 def drawComic(xkml):
     comic = parseXKML(xkml)
     canvas = Image.new('RGB', comic['meta']['size'], color=(255, 255, 255))
-    
+
     panels = comic['comic']['panels']
     for panel in panels.values():
         for fig in panel['figures']:
@@ -106,12 +107,10 @@ def drawComic(xkml):
                     fig_img_strs[body_part])
             # assign scale to each body part
             panel['figures'][fig]['scaling'] = comic['comic']['cast'][fig]['scaling']
-
         drawPanel(canvas,
                   (panel['position'],
                    (panel['position'][0] + panel['size'][0],
                     panel['position'][1] + panel['size'][1])
                    ),
-                  panel['figures'])
-
+                  panel['figures'], panel['dialogs'], comic['comic']['cast'])
     canvas.show()

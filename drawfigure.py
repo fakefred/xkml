@@ -1,4 +1,4 @@
-from PIL import Image, ImageDraw, ImageFilter, ImageFont
+from PIL import Image, ImageDraw
 import math
 import mathutils
 from mathutils import abs_sin as sin, abs_cos as cos
@@ -121,15 +121,3 @@ def drawFigure(ims: dict, canvas: Image, params: dict):
     drawLimbs(ims['leg'], canvas, waist,
               getValueOrFallback(params, ['legs', 'thetas'], 0),
               scaling['global'])
-
-
-'''
-xkcd_font = ImageFont.truetype('./xkcd_script.ttf', 25)
-draw_on_canvas = ImageDraw.Draw(canvas)
-draw_on_canvas.text((15, 15), 'XKML: \nWHAT COULD GO WRONG?',
-                    fill=(0, 0, 0, 255), font=xkcd_font)
-
-
-# canvas.save('out.png')
-canvas.show()
-'''

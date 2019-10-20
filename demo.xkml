@@ -1,7 +1,7 @@
 meta:
     title: xkml
     author: you
-    size: 650*400
+    size: 650*520
 comic:
     cast:
         cueball:
@@ -15,7 +15,7 @@ comic:
                 head: 3.33
         megan:
             images:
-                head: ./components/body/cueball.png
+                head: ./components/body/megan.png
                 body: ./components/body/body.png
                 arm: ./components/body/arm.png
                 leg: ./components/body/leg.png
@@ -25,15 +25,15 @@ comic:
     panels:
         0:
             position: 10, 10
-            size: 310*380
+            size: 310*500
             figures:
                 cueball:
-                    neck: 100, 285
+                    neck: 100, 385
                     head:
                         theta: 0
                         direction: r
                     body:
-                        theta: -5
+                        theta: 0
                     arms:
                         thetas:
                             l: -45, -135
@@ -42,13 +42,8 @@ comic:
                         thetas:
                             l: -15, -10
                             r: 15, 10
-
-        1:
-            position: 330, 10
-            size: 310*380
-            figures:
-                cueball:
-                    neck: 100, 285
+                megan:
+                    neck: 200, 385
                     head:
                         theta: 0
                         direction: l
@@ -62,5 +57,30 @@ comic:
                         thetas:
                             l: -15, -10
                             r: 15, 10
+            dialogs:
+                cueball: This is a demonstration of xkml.
+                cueball: which doesn't work, obviously, mainly because I haven't implemented most of its cool functionalities.
+                megan: inb4 you won't lmao
 
+        #1:
+        #    position: 330, 10
+        #    size: 310*380
+        #    figures:
+        #        cueball:
+        #            neck: 100, 285
+        #            head:
+        #                theta: 0
+        #                direction: l
+        #            body:
+        #                theta: 0
+        #            arms:
+        #                thetas:
+        #                    l: -15, -15
+        #                    r: 15, 15
+        #            legs:
+        #                thetas:
+        #                    l: -15, -10
+        #                    r: 15, 10
+        #    dialogs:
+        #        cueball: smth
 
