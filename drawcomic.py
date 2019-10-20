@@ -8,86 +8,96 @@ from parser import parse as parseXKML
 comic dict for test use.
 ------
 comic = {
-    'meta': {
-        'title': 'Some Title, I Guess?',
-        'author': 'fkfd'
-    },
-    'comic': {
-        'cast': {
-            'cueball': {
-                'images': {
-                    'head': './components/body/cueball.png',
-                    'body': './components/body/body.png',
-                    'arm': './components/body/arm.png',
-                    'leg': './components/body/leg.png'},
-                'scaling': {'global': 0.3, 'head': 3.33}
-            },
-            'megan': {
-                'images': {
-                    'head': './components/body/cueball.png',
-                    'body': './components/body/body.png',
-                    'arm': './components/body/arm.png',
-                    'leg': './components/body/leg.png'
-                },
-                'scaling': {'global': 0.3, 'head': 3.33}
-            }
+  'meta': {
+    'title': 'xkml',
+    'author': 'you',
+    'size': (650, 520)
+  },
+  'comic': {
+    'cast': {
+      'cueball': {
+        'images': {
+          'head': './components/body/cueball.png',
+          'body': './components/body/body.png',
+          'arm': './components/body/arm.png',
+          'leg': './components/body/leg.png'
         },
-        'panels': {
-            0: {
-                'position': (10, 10),
-                'size': (310, 380),
-                'figures': {
-                    'cueball': {
-                        'neck': (100, 285),
-                        'head': {
-                            'theta': 0,
-                            'direction': 'r'
-                        },
-                        'body': {'theta': -5},
-                        'arms': {
-                            'thetas': {
-                                0: (-45, -135),
-                                1: (30, 150)
-                            }
-                        },
-                        'legs': {
-                            'thetas': {
-                                0: (-15, -10),
-                                1: (15, 10)
-                            }
-                        }
-                    }
-                }
-            }, 1: {
-                'position': (330, 10),
-                'size': (310, 380),
-                'figures': {
-                    'cueball': {
-                        'neck': (100, 285),
-                        'head': {
-                            'theta': 0,
-                            'direction': 'l'
-                        },
-                        'body': {
-                            'theta': 0
-                        },
-                        'arms': {
-                            'thetas': {
-                                0: (-15, -15),
-                                1: (15, 15)
-                            }
-                        },
-                        'legs': {
-                            'thetas': {
-                                0: (-15, -10),
-                                1: (15, 10)
-                            }
-                        }
-                    }
-                }
-            }
+        'scaling': {
+          'global': 0.3,
+          'head': 3.33
         }
+      },
+      'megan': {
+        'images': {
+          'head': './components/body/megan.png',
+          'body': './components/body/body.png',
+          'arm': './components/body/arm.png',
+          'leg': './components/body/leg.png'
+        },
+        'scaling': {
+          'global': 0.3,
+          'head': 3.33
+        }
+      }
+    },
+    'panels': {
+      0: {
+        'position': (10, 10),
+        'size': (310, 500),
+        'figures': {
+          'cueball': {
+            'neck': (100, 385),
+            'head': {
+              'theta': 0,
+              'direction': 'r'
+            },
+            'body': {
+              'theta': 0
+            },
+            'arms': {
+              'thetas': {
+                0: (-45, -135),
+                1: (30, 150)
+              }
+            },
+            'legs': {
+              'thetas': {
+                0: (-15, -10),
+                1: (15, 10)
+              }
+            }
+          },
+          'megan': {
+            'neck': (200, 385),
+            'head': {
+              'theta': 0,
+              'direction': 'l'
+            },
+            'body': {
+              'theta': 0
+            },
+            'arms': {
+              'thetas': {
+                0: (-15, -15),
+                1: (15, 15)
+              }
+            },
+            'legs': {
+              'thetas': {
+                0: (-15, -10),
+                1: (15, 10)
+              }
+            }
+          }
+        },
+        'dialogs': {
+          0: 'cueball: This is a demonstration of xkml.',
+          1: "cueball: which doesn't work, obviously, mainly because I haven't implemented most of its cool functionalities.",
+          2: "megan: inb4 you won't lmao"
+        }
+      }
     }
+  }
 }
 '''
 
