@@ -25,11 +25,11 @@ def setProperty(dictionary: dict, trace: list, value: any):
     return dictionary
 
 
-def numberifyIfIsNumber(str: str):
-    if re.match(r'^-?\d+?\.?\d+$|^-?\d+$', str) is not None:
-        if str.find('.') != -1:
+def numberifyIfIsNumber(string: str):
+    if type(string) == str and re.match(r'^-?\d+?\.?\d+$|^-?\d+$', string) is not None:
+        if string.find('.') != -1:
             # found decimal point; is float
-            return float(str)
+            return float(string)
         else:
-            return int(str)
-    return str
+            return int(string)
+    return string

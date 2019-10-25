@@ -1,0 +1,21 @@
+cast:
+    cueball:
+        images:
+            head: ./components/body/cueball.png
+            body: ./components/body/body.png
+            arm: ./components/body/arm.png
+            leg: ./components/body/leg.png
+        scaling:
+            global: 0.3
+            head: 3.33
+    megan:
+        images:
+            head: ./components/body/megan.png
+            body: ./components/body/body.png
+            arm: ./components/body/arm.png
+            leg: ./components/body/leg.png
+        scaling:
+            global: 0.3
+            head: 3.33
+
+panelsize: 310*430

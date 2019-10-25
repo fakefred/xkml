@@ -1,4 +1,4 @@
-from utils import setProperty, numberifyIfIsNumber
+from utils import setProperty, numberifyIfIsNumber, getValueOrFallback
 
 # '.' should not be a delimiter
 # because it appears in numbers
@@ -44,6 +44,9 @@ def parse(filename: str):
     DIALOGS_MODE = False
     dialog_line_index = 0
     line_num = 0
+
+    imports = {}
+
     for line in xkml_lines:
         line_num += 1
         # count indent level
@@ -87,7 +90,17 @@ def parse(filename: str):
 
             v = v[:-1].strip()
 
-            # v is an int/float
+            # v is a reference to an import
+            if type(v) == str and v.startswith('$'):
+                import_trace = v[1:].split('.')
+                xkp_filename = root['import'][import_trace[0]]
+                if xkp_filename not in imports:
+                    # here it comes, recursive function
+                    imports[xkp_filename] = parse(xkp_filename)
+                v = getValueOrFallback(
+                    imports[xkp_filename], import_trace[1:], {})
+
+            # v is a string in int/float format
             v = numberifyIfIsNumber(v)
 
             # v is interpreted as a tuple of ints
@@ -99,13 +112,15 @@ def parse(filename: str):
                         v_split_int.append(int(substr.strip()))
                 v = tuple(v_split_int)
 
-            # interpret escape chars in v
-            if type(v) == str:
-                v = v.replace('\\n', '\n')
         else:
+            # dialogs mode
             k = dialog_line_index
             v = line.strip()
             dialog_line_index += 1
+
+        # interpret escape chars in v, which is universal
+        if type(v) == str:
+            v = v.replace('\\n', '\n')
 
         # from change of indent level, determine trace
         if line_idt > indent:
@@ -129,3 +144,8 @@ def parse(filename: str):
             DIALOGS_MODE = True
             NEXT_TIME_GO_INTO_DIALOGS_MODE = False
     return root
+
+
+if __name__ == '__main__':
+    # debug mode
+    print(parse('demo.xkml'))
