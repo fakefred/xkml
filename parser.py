@@ -20,15 +20,20 @@ def countLeadingSpaces(str: str) -> int:
     return len(str) - len(str.lstrip())
 
 
-def parse(filename: str):
+def parse(filename: str) -> dict:
     # open the xkml file
     raw_xkml_lines = open(filename).readlines()
 
-    # remove blank lines and comment lines
+    # manipulate the file
     xkml_lines = []
     for line in raw_xkml_lines:
+        # remove blank lines and comment lines
         if line.strip() != '' and not line.strip().startswith('#'):
-            xkml_lines.append(line)
+            # and merge multiline (escaped with \ at the end of a line)
+            if len(xkml_lines) > 1 and xkml_lines[-1].endswith('\\'):
+                xkml_lines[-1] = xkml_lines[-1][:-1] + line.strip()
+            else:
+                xkml_lines.append(line.rstrip())
 
     # detect indentation spaces
     spaces = 4
@@ -43,12 +48,10 @@ def parse(filename: str):
     indent = -1
     DIALOGS_MODE = False
     dialog_line_index = 0
-    line_num = 0
 
     imports = {}
 
     for line in xkml_lines:
-        line_num += 1
         # count indent level
         line_idt = countLeadingSpaces(line) // spaces
         if line_idt < indent:
