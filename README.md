@@ -14,8 +14,10 @@ python __init__.py
 ```
 python3, of course, change accordingly
 
-the provided `demo.xkml` should give you this on the left:
-![](https://fkfd.me/static/xkml/dialogs_demo_0.png)
+UPDATE: `demo.xkml` now contains descriptive comments
+
+the provided `demo.xkml` should give you this:
+![](https://fkfd.me/static/xkml/dialogs_demo_1.png)
 
 you can mess with some parameters and re-run command above
 
