@@ -1,25 +1,70 @@
+# Hi, let's do a walkaround of this xkml file!
+# comments start with #
+
+# the xkml language is indent-based, just like python!
+# the number of leading spaces of the first non-blank non-comment
+# line beggining with whitespace is remembered as one indent level.
+# for example, if the second line begins with 4 spaces, your xkml file
+# is recognized as using 4-spaces indent.
+
+# now let's begin
+# `parser.py` will form a dict based on the tree below
+# this part will be interpreted as:
+# {'meta':
+#     'title': 'xkml',
+#     'author': 'you',
+#     'size': (650, 450)
+# }
+
 meta:
     title: xkml
     author: you
+    # size is automatically transformed into a tuple,
+    # delimited by the char *
+    # very cool!
     size: 650*450
+
+# the import is an important feature
 import:
+    # in the following format:
+    # reference_name: file_name_containing_presets
+    # there is a file called `presets.xkp`
     presets: presets.xkp
+
 comic:
+    # referring to parse('presets.xkp')['cast']
     cast: $presets.cast
     panels:
         0:
+            # topleft corner (x, y)
             position: 10, 10
             size: $presets.panelsize
             figures:
+                # you can give arbitrary names to your figures,
+                # except for those specified as in KEYS_WITH_SPECIAL_VALUE_DELIMITERS
+                # and SPECIAL_KEY_TRANSFORMS in parser.py
+                # you can even include spaces (as is also the case with imports),
+                # although it is not encouraged.
                 cueball:
+                    # the position of each figure is defined by their neck.
+                    # every other body part is anchored on the neck.
                     neck: 100, 315
                     head:
+                        # `theta` or `thetas` is the way I prefer to refer to
+                        # the angle between a line and another
+                        # positive is counterclockwise
                         theta: 0
+
+                        # direction: l, left or r, right
+                        # flips head horizontally
+                        # default r
                         direction: r
                     body:
                         theta: 0
                     arms:
                         thetas:
+                            # l and r don't matter
+                            # they just make parsing easier
                             l: -45, -135
                             r: 30, 150
                     legs:
@@ -42,10 +87,23 @@ comic:
                             l: -15, -10
                             r: 15, 10
             dialogs:
+                # format:
+                # figure_name: speech
+                # these are not strictly parsed as dicts
+                # because of duplicate keys
+                # instead, they are parsed as tuples in (figure_name, speech)
+
+                # you can use \n to indicate force linebreak,
+                # although xkml takes care of textwidth most of the time
+                # and auto wraps the text
+
+                # xkml also auto capitalizes dialog text.
+
                 cueball: This is a demonstration \nof xkml.
                 cueball: one day or another, \ni'll finish it.
         1:
             position: 330, 10
+            # imports are handy when you need global configs to mess with
             size: $presets.panelsize
             figures:
                 cueball:
@@ -79,6 +137,18 @@ comic:
                             l: -15, -10
                             r: 15, 10
             dialogs:
-                megan: my take is that you'll never finish, just like what happened to all \nyour previous side projects.
+                # multiline is possible through backslashes (\)
+                # at the end of a line
+                # the whitespace between \ and text on the the next line
+                # do not matter, as xkml trims them off
+                megan: my take is that you'll never \
+                        finish, just like \
+                        what happened to all \
+                        \nyour previous \
+                        side projects.
                 cueball: shh, keep it down.
+
+# thank you for reading my demo xkml file.
+# stay tuned, and if you doubt if i will actually finish it,
+# keep it down.
                 
