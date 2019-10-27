@@ -24,8 +24,15 @@ you can mess with some parameters and re-run command above
 ## Progress
 the dialog feature is WIP
 
+### Recently implemented features:
+- [x] dialog text
+- [x] import
+- [x] multiline using backslash
+
+
 pretty much anything else is NYI
 
 ## Licensing
-this repo: GPLv3
-xkcd_script font: [CC BY-NC 3.0](https://creativecommons.org/licenses/by-nc/3.0/) from [ipython/xkcd-font](https://github.com/ipython/xkcd-font)
+This repo: GPLv3
+
+`xkcd_script` font: [CC BY-NC 3.0](https://creativecommons.org/licenses/by-nc/3.0/) from [ipython/xkcd-font](https://github.com/ipython/xkcd-font)
